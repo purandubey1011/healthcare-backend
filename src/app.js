@@ -13,25 +13,23 @@ app.use(require("morgan")("tiny"));
 
 // ✅ Use ONLY this CORS middleware (no manual headers)
 const cors = require("cors");
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://gdgoenkahealthcaresiliguri.com"
+];
+
 app.use(
   cors({
-    origin: ["http://localhost:5173",'https://gdgoenkahealthcaresiliguri.com',"*"],
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       const allowedOrigins = ["http://localhost:5173"];
-//       if (allowedOrigins.indexOf(origin) !== -1) {
-//         callback(null, true);
-//       } else {
-//         callback(new Error("Not allowed by CORS"));
-//       }
-//     },
-//     credentials: true,
-//   })
-// );
 
 // body parser
 app.use(express.json());
