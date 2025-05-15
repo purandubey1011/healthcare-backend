@@ -15,23 +15,23 @@ app.use(require("morgan")("tiny"));
 const cors = require("cors");
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173",'*'],
     credentials: true,
   })
 );
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      const allowedOrigins = ["http://localhost:5173"];
-      if (allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       const allowedOrigins = ["http://localhost:5173"];
+//       if (allowedOrigins.indexOf(origin) !== -1) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     credentials: true,
+//   })
+// );
 
 // body parser
 app.use(express.json());
