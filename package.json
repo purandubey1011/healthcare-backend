@@ -4,7 +4,7 @@
   "description": "this is goenka backend part",
   "main": "src/app.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node src/app.js"
   },
   "keywords": [],
   "author": "puran dubey",
