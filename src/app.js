@@ -15,7 +15,7 @@ app.use(require("morgan")("tiny"));
 const cors = require("cors");
 app.use(
   cors({
-    origin: ["http://localhost:5173",'*'],
+    origin: ["http://localhost:5173",'https://gdgoenkahealthcaresiliguri.com',"*"],
     credentials: true,
   })
 );
